@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+.sans {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap');
+.calig {
+    font-family: 'Corinthia', cursive;
+}
+
+@layer components {
+    .navBtn {
+        @apply hidden h-6 md:inline-flex
+        cursor-pointer hover:scale-125
+        transition-all duration-150 ease-out;
+    }
+
+    .btn {
+        @apply h-7 cursor-pointer hover:scale-125
+        transition-all duration-150 ease-out;
+    }
+}
+
+.sidebar{
+    height: calc(100vh - 70px);
+    background-color: rgb(244, 244, 244) ;
+    position: sticky;
+    top: 70px;
+    border-radius: 0px 36px 13px 0px;
+}
