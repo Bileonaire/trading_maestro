@@ -15,28 +15,48 @@ datasource db {
 //   url      = "file:./forex.db"
 // }
 
-model Post {
+model Trade {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
-}
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+  trader    User     @relation(fields: [traderId], references: [id])
+  traderId  Int
+
+  currency  String
+  direction String
+
+  slPrice  Decimal
+  tpPrice  Decimal?
+  slPips   Decimal?
+  tpPips   Decimal?
+  RR       Decimal?
+
+  accumulate Decimal?
+  D1prev   Int?
+  D18ema   Int?
+  D1CLOSE   Int?
+  H4PREV   Int?
+  H450SMA   Int?
+  H420EMA   Int?
+  H1PREV   Int?
+  M15PREV   Int?
+  M15200EMA   Int?
+  M1550SMA   Int?
+  M1520SMA   Int?
+  M15ENV   Int?
+  H1ENV   Int?
+  H4ENV   Int?
+
+  maxPips  Decimal?
+  profit Decimal?
+  closed    Boolean  @default(false)
+  closedAt  DateTime?
 }
 
 model User {
   id      Int      @id @default(autoincrement())
   email   String   @unique
   name    String?
-  posts   Post[]
-  profile Profile?
+  trades  Trade[]
+  image   String?
 }
