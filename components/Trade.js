@@ -39,8 +39,13 @@ function Trade({ trade }) {
 
     return (
          <div className="m-5 rounded-xl shadow-md cursor-pointer">
-                <div onClick={() => setOpen(!open)} className="flex justify-between items-center p-2 hover:bg-gray-100">
-
+                <div onClick={() => setOpen(!open)}
+                    className={
+                        open?
+                            "flex justify-between items-center p-2 bg-gray-100"
+                            :
+                            "flex justify-between items-center p-2 hover:bg-gray-100"
+                        }>
                     <div className="flex-1 justify-center">{id}</div>
                     <span className="flex-1">{formatDate(createdAt, 'ddd HH:MM')}</span>
                     <span className="flex-1">{currency}</span>
@@ -73,11 +78,13 @@ function Trade({ trade }) {
                 {open &&
                 <div className="grid grid-cols-3 p-5 `${}`">
                     <div className="col-span-1 rounded-3xl shadow-xl">
-                        <img
-                            src="https://www.tradingview.com/x/npXdGlp8/"
-                            alt="trade"
-                            className="rounded-3xl object-cover h-80"
-                        />
+                        <div className="content-center p-2">
+                            <img
+                                src="https://www.tradingview.com/x/npXdGlp8/"
+                                alt="trade"
+                                className="rounded-3xl object-cover h-80"
+                            />
+                        </div>
                     </div>
                     <div className="col-span-2 grid grid-cols-3 shadow-sm rounded-xl p-5">
                         <div className="col-span-2 text-xs mx-5">
