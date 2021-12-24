@@ -4,10 +4,18 @@ import { prisma } from "../../prisma";
 export default async function tradeApi(req, res) {
   const data = req.query;
   data.traderId = parseInt(data.traderId);
+  data.ticketNum = parseInt(data.ticketNum);
 
-  const newTrade = await prisma.trade.create({
-    data,
-  })
+  if(data.closed && data.closed == 'true') data.closed = true;
 
-  res.status(200).json(newTrade)
+  try {
+    const newTrade = await prisma.trade.create({
+      data,
+    });
+    res.status(201).json(newTrade)
+  } catch (err) {
+    console.log(err);
+    console.log(err.message);
+    res.status(400).json(err.message)
+  }
 }

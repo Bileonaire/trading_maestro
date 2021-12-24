@@ -25,32 +25,61 @@ model Trade {
   currency  String
   direction String
 
+  ticketNum Int @unique
+
   slPrice  Decimal
   tpPrice  Decimal?
   slPips   Decimal?
   tpPips   Decimal?
   RR       Decimal?
+  lotSize  Decimal?
+  commission  Decimal?
 
   accumulate Decimal?
-  D1prev   Int?
-  D18ema   Int?
-  D1CLOSE   Int?
-  H4PREV   Int?
-  H450SMA   Int?
-  H420EMA   Int?
-  H1PREV   Int?
-  M15PREV   Int?
-  M15200EMA   Int?
-  M1550SMA   Int?
-  M1520SMA   Int?
-  M15ENV   Int?
-  H1ENV   Int?
-  H4ENV   Int?
+
+  D1CLOSE String?
+  H4CLOSE String?
+  H1CLOSE String?
+  M15CLOSE String?
+
+  D1PREV String?
+  H4PREV String?
+  H1PREV String?
+  M15PREV String?
+
+  D1200EMA String?
+  H4200EMA String?
+  H1200EMA String?
+  M15200EMA String?
+
+  D150SMA String?
+  H450SMA String?
+  H150SMA String?
+  M1550SMA String?
+
+  D18EMA String?
+  H48EMA String?
+  H18EMA String?
+  M158EMA String?
+
+  D120EMA String?
+  H420EMA String?
+  H120EMA String?
+  M1520SMA String?
+
+  D1ENV String?
+  H4ENV String?
+  H1ENV String?
+  M15ENV String?
+
+  image1 String?
+  image2 String?
 
   maxPips  Decimal?
   profit Decimal?
   closed    Boolean  @default(false)
   closedAt  DateTime?
+  closePrice Decimal?
 }
 
 model User {
@@ -59,4 +88,23 @@ model User {
   name    String?
   trades  Trade[]
   image   String?
+  role    Role     @default(USER)
+}
+
+model Currency {
+  id      Int      @id @default(autoincrement())
+  name   String   @unique
+  accumulate   Decimal?
+  spread    Decimal?
+  lastUpdated   DateTime @updatedAt
+  TrendD1   Decimal?
+  TrendH4   Decimal?
+  TrendH1   Decimal?
+  TrendM15   Decimal?
+  AvgTrend Decimal?
+}
+
+enum Role {
+  USER
+  ADMIN
 }

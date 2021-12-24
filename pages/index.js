@@ -5,8 +5,19 @@ function trades({ tradesData }) {
     return (
         <div className="">
             <div className="flex justify-between">
-                <div className=" flex-1 mx-5 shadow-lg h-24 p-5 rounded-lg">
-                    Trade Statistics
+                <div className=" flex-1 mx-5 shadow-lg h-32 p-5 rounded-lg">
+                    <h3 className="font-semibold from-stone-900 text-lg underline">Trade Statistics</h3>
+
+                    <div className="flex">
+                        <div className="text-center mr-10"> <h2 className="">Trades Taken : 12</h2> </div>
+                        <div>
+                            <h3>Won 6</h3>
+                            <h3>Lost 6</h3>
+                        </div>
+
+                    </div>
+
+
                 </div>
                 <div className="flex-1 mx-5 shadow-lg h-24 p-5 rounded-lg">
                     one
