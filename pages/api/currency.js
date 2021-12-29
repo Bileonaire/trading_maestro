@@ -16,7 +16,6 @@ export default async function currencyUpdate(req, res) {
                 ...data
             },
         });
-        console.log(currency);
         res.status(200).json(currency)
     } catch (err) {
         res.status(400).json(err.message)

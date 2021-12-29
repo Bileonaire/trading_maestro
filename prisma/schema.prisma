@@ -19,89 +19,94 @@ model Trade {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 
-  trader    User     @relation(fields: [traderId], references: [id])
-  traderId  Int
+  trader   User @relation(fields: [traderId], references: [id])
+  traderId Int
 
   currency  String
   direction String
 
   ticketNum Int @unique
 
-  slPrice  Decimal
-  tpPrice  Decimal?
-  slPips   Decimal?
-  tpPips   Decimal?
-  RR       Decimal?
-  lotSize  Decimal?
-  commission  Decimal?
+  slPrice    Decimal
+  tpPrice    Decimal?
+  slPips     Decimal?
+  tpPips     Decimal?
+  RR         Decimal?
+  lotSize    Decimal?
+  commission Decimal?
 
   accumulate Decimal?
+  TrendD1    Decimal?
+  TrendH4    Decimal?
+  TrendH1    Decimal?
+  TrendM15   Decimal?
+  AvgTrend   Decimal?
 
-  D1CLOSE String?
-  H4CLOSE String?
-  H1CLOSE String?
+  D1CLOSE  String?
+  H4CLOSE  String?
+  H1CLOSE  String?
   M15CLOSE String?
 
-  D1PREV String?
-  H4PREV String?
-  H1PREV String?
+  D1PREV  String?
+  H4PREV  String?
+  H1PREV  String?
   M15PREV String?
 
-  D1200EMA String?
-  H4200EMA String?
-  H1200EMA String?
+  D1200EMA  String?
+  H4200EMA  String?
+  H1200EMA  String?
   M15200EMA String?
 
-  D150SMA String?
-  H450SMA String?
-  H150SMA String?
+  D150SMA  String?
+  H450SMA  String?
+  H150SMA  String?
   M1550SMA String?
 
-  D18EMA String?
-  H48EMA String?
-  H18EMA String?
+  D18EMA  String?
+  H48EMA  String?
+  H18EMA  String?
   M158EMA String?
 
-  D120EMA String?
-  H420EMA String?
-  H120EMA String?
+  D120EMA  String?
+  H420EMA  String?
+  H120EMA  String?
   M1520SMA String?
 
-  D1ENV String?
-  H4ENV String?
-  H1ENV String?
+  D1ENV  String?
+  H4ENV  String?
+  H1ENV  String?
   M15ENV String?
 
   image1 String?
   image2 String?
 
-  maxPips  Decimal?
-  profit Decimal?
-  closed    Boolean  @default(false)
-  closedAt  DateTime?
+  maxPips    Decimal?
+  profit     Decimal?
+  closed     Boolean   @default(false)
+  closedAt   DateTime?
   closePrice Decimal?
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  trades  Trade[]
-  image   String?
-  role    Role     @default(USER)
+  id     Int     @id @default(autoincrement())
+  email  String  @unique
+  name   String?
+  trades Trade[]
+  image  String?
+  role   Role    @default(USER)
 }
 
 model Currency {
-  id      Int      @id @default(autoincrement())
-  name   String   @unique
-  accumulate   Decimal?
-  spread    Decimal?
-  lastUpdated   DateTime @updatedAt
-  TrendD1   Decimal?
-  TrendH4   Decimal?
-  TrendH1   Decimal?
-  TrendM15   Decimal?
-  AvgTrend Decimal?
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  AvgTrend    Decimal?
+  accumulate  Decimal?
+  spread      Decimal?
+  lastUpdated DateTime @updatedAt
+  TrendD1     Decimal?
+  TrendH4     Decimal?
+  TrendH1     Decimal?
+  TrendM15    Decimal?
 }
 
 enum Role {
