@@ -17,7 +17,7 @@ export default async function updateTrade(req, res) {
             },
             data,
         });
-        //updateJsonTrade(data);
+        updateJsonTrade(data);
         res.status(200).json(updatedTrade)
     } catch (err) {
         console.log(err);

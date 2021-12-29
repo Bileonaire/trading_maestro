@@ -42,9 +42,11 @@ export function save(data) {
 
 export async function updateJsonTrade(data) {
     let trades = await getData();
-    let trade = trades.records.find(item => item.ticketNum == data.ticketNum);
-    trade = { ...trade, ...data };
-    console.log(trade);
-    console.log(trades);
+
+    for (var i = 0; i < trades.records.length; i++) {
+        if (trades.records[i].ticketNum == data.ticketNum) {
+            trades.records[i] = { ...trades.records[i], ...data};
+        }
+    }
     await save(trades);
 }
